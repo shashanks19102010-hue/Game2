@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!--
+=====================================================================
+ EXTREME PLATFORMER GAME
+ Inspired by Super Mario (but more advanced)
+ File 1: index.html
+ Author: You
+ Engine: Custom JS Engine
+=====================================================================
+-->
+
+<html lang="en">
+
+<!-- ============================================================= -->
+<!-- ========================== HEAD ============================== -->
+<!-- ============================================================= -->
+<head>
+
+    <!-- BASIC META -->
+    <meta charset="UTF-8">
+
+    <!-- MOBILE RESPONSIVE META -->
+    <meta name="viewport"
+          content="width=device-width,
+                   initial-scale=1.0,
+                   maximum-scale=1.0,
+                   minimum-scale=1.0,
+                   user-scalable=no">
+
+    <!-- THEME COLOR (ANDROID STATUS BAR) -->
+    <meta name="theme-color" content="#000000">
+
+    <!-- SEO (OPTIONAL BUT PROFESSIONAL) -->
+    <meta name="description" content="Extreme Platformer Game with 100 Levels, AI Enemies, Joystick Controls">
+    <meta name="keywords" content="game, mario, platformer, javascript game, html5 canvas">
+    <meta name="author" content="Independent Developer">
+
+    <title>EXTREME PLATFORMER GAME</title>
+
+    <!-- MAIN STYLESHEET -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- FONT (OPTIONAL) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <!-- PREVENT TEXT SELECTION & DOUBLE TAP -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+            -webkit-user-select: none;
+            user-select: none;
+
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            overflow: hidden;
+        }
+    </style>
+
+</head>
+
+<!-- ============================================================= -->
+<!-- =========================== BODY ============================= -->
+<!-- ============================================================= -->
+<body>
+
+<!-- ============================================================= -->
+<!-- ===================== ROOT GAME WRAPPER ===================== -->
+<!-- ============================================================= -->
+<div id="game-root">
+
+    <!-- ========================================================= -->
+    <!-- ======================= LOADER ========================== -->
+    <!-- ========================================================= -->
+    <div id="loader-screen">
+        <div class="loader-content">
+            <h1>EXTREME PLATFORMER</h1>
+            <p>Loading Assets...</p>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- ======================== HUD ============================= -->
+    <!-- ========================================================= -->
+    <div id="hud-container">
+
+        <!-- LEFT HUD -->
+        <div id="hud-left">
+            <div class="hud-box">
+                <span class="hud-label">❤️</span>
+                <span id="hud-lives">3</span>
+            </div>
+
+            <div class="hud-box">
+                <span class="hud-label">🪙</span>
+                <span id="hud-coins">0</span>
+            </div>
+        </div>
+
+        <!-- CENTER HUD -->
+        <div id="hud-center">
+            <span id="hud-world">WORLD</span>
+            <span id="hud-level">1-1</span>
+        </div>
+
+        <!-- RIGHT HUD -->
+        <div id="hud-right">
+            <div class="hud-box">
+                <span class="hud-label">⏱</span>
+                <span id="hud-time">300</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- ===================== GAME CANVAS ======================= -->
+    <!-- ========================================================= -->
+    <div id="canvas-wrapper">
+
+        <!-- MAIN CANVAS -->
+        <canvas id="gameCanvas"
+                width="360"
+                height="640">
+        </canvas>
+
+        <!-- BACKGROUND CANVAS (PARALLAX) -->
+        <canvas id="bgCanvas"
+                width="360"
+                height="640">
+        </canvas>
+
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- ================= MOBILE CONTROLS ====================== -->
+    <!-- ========================================================= -->
+    <div id="mobile-ui">
+
+        <!-- ================= LEFT SIDE ================= -->
+        <div id="left-controls">
+
+            <!-- VIRTUAL JOYSTICK BASE -->
+            <div id="joystick-base">
+                <div id="joystick-stick"></div>
+            </div>
+
+        </div>
+
+        <!-- ================= RIGHT SIDE ================= -->
+        <div id="right-controls">
+
+            <!-- JUMP BUTTON -->
+            <button id="btn-jump" class="action-btn">
+                JUMP
+            </button>
+
+            <!-- ATTACK BUTTON (FUTURE) -->
+            <button id="btn-action" class="action-btn">
+                ACTION
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- ====================== PAUSE MENU ======================= -->
+    <!-- ========================================================= -->
+    <div id="pause-menu" class="hidden">
+
+        <div class="menu-box">
+            <h2>PAUSED</h2>
+
+            <button id="resume-btn">Resume</button>
+            <button id="restart-btn">Restart</button>
+            <button id="quit-btn">Quit</button>
+        </div>
+
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- ==================== GAME OVER SCREEN =================== -->
+    <!-- ========================================================= -->
+    <div id="gameover-screen" class="hidden">
+
+        <div class="menu-box">
+            <h2>GAME OVER</h2>
+            <p id="final-score">Score: 0</p>
+
+            <button id="retry-btn">Retry</button>
+            <button id="home-btn">Home</button>
+        </div>
+
+    </div>
+
+</div>
+<!-- ================= END GAME ROOT ============================ -->
+
+<!-- ============================================================= -->
+<!-- ===================== JAVASCRIPT FILES ===================== -->
+<!-- ============================================================= -->
+
+<!-- NOTE:
+     All scripts are loaded as ES MODULES
+     Each file has a specific responsibility
+-->
+
+<script type="module" src="js/main.js"></script>
+
+<!--
+=====================================================================
+ END OF FILE 1
+=====================================================================
+-->
+
+</body>
+</html>
