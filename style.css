@@ -1,0 +1,230 @@
+/* =====================================================================
+   EXTREME PLATFORMER GAME
+   File 2: style.css
+   Purpose: Full Game UI / HUD / Controls / Effects
+===================================================================== */
+
+/* ====================== ROOT VARIABLES ====================== */
+:root {
+    --bg-dark: #050b12;
+    --bg-mid: #0b1d2e;
+    --neon-blue: #00eaff;
+    --neon-green: #00ff9d;
+    --neon-red: #ff004c;
+    --neon-yellow: #ffe600;
+
+    --hud-bg: rgba(0, 0, 0, 0.45);
+    --btn-bg: rgba(0, 255, 255, 0.2);
+
+    --font-main: 'Arial', sans-serif;
+}
+
+/* ====================== GAME ROOT ====================== */
+#game-root {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top, var(--bg-mid), var(--bg-dark));
+    overflow: hidden;
+}
+
+/* ====================== LOADER ====================== */
+#loader-screen {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #02050a, #000);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.loader-content {
+    text-align: center;
+    color: white;
+}
+
+.loader-content h1 {
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: var(--neon-blue);
+    text-shadow: 0 0 20px var(--neon-blue);
+}
+
+.loader-bar {
+    width: 220px;
+    height: 8px;
+    background: #111;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.loader-progress {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-green));
+    animation: loading 3s infinite;
+}
+
+@keyframes loading {
+    0% { width: 0%; }
+    50% { width: 70%; }
+    100% { width: 100%; }
+}
+
+/* ====================== HUD ====================== */
+#hud-container {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    right: 0;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    z-index: 50;
+    font-family: var(--font-main);
+    color: white;
+}
+
+.hud-box {
+    background: var(--hud-bg);
+    padding: 6px 10px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 234, 255, 0.3);
+    font-size: 14px;
+}
+
+#hud-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+/* ====================== CANVAS ====================== */
+#canvas-wrapper {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    position: absolute;
+    image-rendering: pixelated;
+}
+
+/* ====================== MOBILE CONTROLS ====================== */
+#mobile-ui {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 160px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    pointer-events: none;
+}
+
+/* ===== LEFT CONTROLS ===== */
+#left-controls {
+    width: 160px;
+    pointer-events: auto;
+}
+
+#joystick-base {
+    width: 120px;
+    height: 120px;
+    background: rgba(0, 234, 255, 0.15);
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 25px rgba(0, 234, 255, 0.5);
+}
+
+#joystick-stick {
+    width: 50px;
+    height: 50px;
+    background: var(--neon-blue);
+    border-radius: 50%;
+    position: absolute;
+    top: 35px;
+    left: 35px;
+    box-shadow: 0 0 30px var(--neon-blue);
+}
+
+/* ===== RIGHT CONTROLS ===== */
+#right-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    pointer-events: auto;
+}
+
+.action-btn {
+    width: 90px;
+    height: 45px;
+    border-radius: 25px;
+    border: none;
+    font-size: 14px;
+    color: #000;
+    background: var(--neon-green);
+    box-shadow: 0 0 25px var(--neon-green);
+    transition: transform 0.1s ease;
+}
+
+.action-btn:active {
+    transform: scale(0.92);
+}
+
+/* ====================== PAUSE / GAME OVER ====================== */
+.hidden {
+    display: none;
+}
+
+#pause-menu,
+#gameover-screen {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-box {
+    background: #0a0f18;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 0 40px rgba(0, 234, 255, 0.4);
+}
+
+.menu-box h2 {
+    margin-bottom: 15px;
+    color: var(--neon-blue);
+}
+
+.menu-box button {
+    width: 160px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 20px;
+    border: none;
+    background: var(--neon-blue);
+    color: black;
+    box-shadow: 0 0 20px var(--neon-blue);
+}
+
+/* ====================== RESPONSIVE ====================== */
+@media (min-width: 768px) {
+    #mobile-ui {
+        display: none;
+    }
+}
